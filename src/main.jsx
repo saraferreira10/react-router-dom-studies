@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './routes/Root.jsx';
+import ErrorPage from './ErrorPage.jsx';
+import Contact from './routes/Contact.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>HOME</div>
-  },
-  {
-    path: "/about",
-    element: <div>ABOUT</div>
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />
+      }
+    ]
   }
 ]);
 
